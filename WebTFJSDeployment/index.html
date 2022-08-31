@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>function onOpenCvReady(){
+    console.log("opencv load success");
+  }</script>
+  <script async src="opencvjs/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+  <script src="node_modules\binvox\lib\binvox.min.js"></script>
+  <script src="node_modules\three\build\three.min.js"></script>
+  <script src="node_modules\three\examples\js\controls\OrbitControls.js"></script>
+  <script src="node_modules\dat.gui\build\dat.gui.min.js"></script>
+  <script src="node_modules\stats-js/build\stats.min.js"></script>
+  <script src="node_modules\binvox\lib\binvox.js"></script>
+  <script src="node_modules\three-voxel-loader\lib\voxel-loader.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+
+  <div class="wrap">
+    <aside id="left">
+      <div id="operate">
+        <img src="pix2vox.png" height=55 width=224>
+        <p id="loadmodelview">正在获取模型</p>
+        <img id="imgview" src="test.png" height=224 width=224>
+        <form>
+         <input type="file" id="input_image" />
+        </form>
+        <p>预测所用时间：</p>
+        <p id="inferencetime">40 ms</p>
+        <button type="button" onclick="predict();">生成3D模型</button>
+      </div>
+      <script>
+        var x=new FileReader;
+        uploadfileelement=document.getElementById("input_image")
+        uploadfileelement.onchange=function(){
+          x.readAsDataURL(this.files[0]);
+        }
+        x.onloadend=function(){
+          document.getElementById('imgview').src=this.result;
+          input_image_url=this.result;
+        }
+      </script>
+    </aside>
+    <section id="right">
+      <div id="show">
+        <div id="viewport"></div>
+        <div id="loader">
+          <p>Loading&hellip;</p>
+        </div>
+        </div>
+    </section>
+  </div>
+</body>
+
+</html>

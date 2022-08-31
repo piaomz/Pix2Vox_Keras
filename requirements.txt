@@ -1,0 +1,8 @@
+numpy~=1.19.2
+opencv-python~=4.5.1.48
+tensorflow~=2.2.0
+#tensorflow-gpu~=2.2.0
+matplotlib~=3.3.2
+easydict~=1.9
+argparse~=1.4.0
+#pprint~=0.1
